@@ -26,4 +26,15 @@ public class Tutorial {
 
     public Tutorial() {
     }
+
+    public Tutorial(String title, String description, boolean published) {
+        this.title = title;
+        this.description = description;
+        this.published = published;
+    }
+
+    @Override
+    public String toString() {
+        return "Tutorial [id=" + id + ", title=" + title + ", desc=" + description + ", published=" + published + "]";
+    }
 }
