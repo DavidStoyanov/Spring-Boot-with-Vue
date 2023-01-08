@@ -8,7 +8,10 @@ const routes: any[] = [
   {
     path: '/',
     name: 'Home',
-    component: HomeView
+    component: HomeView,
+    meta: {
+      title: 'Home - Vite App'
+    }
   },
   {
     path: '/about',
@@ -16,17 +19,26 @@ const routes: any[] = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
+    meta: {
+      title: 'About - Vite App'
+    }
   },
   {
     path: '/add',
     name: 'TutorialAdd',
-    component: TutorialAdd
+    component: TutorialAdd,
+    meta: {
+      title: 'Add tutorial - Vite App'
+    }
   },
   {
     path: '/tutorials',
     name: 'TutorialsList',
-    component: TutorialsList
+    component: TutorialsList,
+    meta: {
+      title: 'Tutorials - Vite App'
+    }
   },
   // redirect
   {
@@ -41,13 +53,23 @@ const routes: any[] = [
   {
     path: '/:catchAll(.*)',
     name: 'NotFound',
-    component: NotFound
+    component: NotFound,
+    meta: {
+      title: 'Not Found - Vite App'
+    }
   }
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const metaTitle = to.meta.title;
+  document.title = `${to.meta.title}`;
+  if (!metaTitle) document.title = `Vite App`;
+  next();
 })
 
 export default router
