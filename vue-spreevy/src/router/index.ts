@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AddTutorial from '../views/AddTutorial.vue'
 import TutorialsList from '../views/TutorialsList.vue'
+import NotFound from '../views/NotFound.vue'
 
 const routes: any[] = [
   {
@@ -27,6 +28,17 @@ const routes: any[] = [
     name: 'tutorials-list',
     component: TutorialsList
   },
+  // redirect
+  {
+    path: '/all-tutorials',
+    redirect: '/tutorials'
+  },
+  // catchall 404
+  {
+    path: '/:catchAll(.*)',
+    name: 'not-found',
+    component: NotFound
+  }
 ]
 
 const router = createRouter({
