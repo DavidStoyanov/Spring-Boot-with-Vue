@@ -1,18 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import AddTutorial from '../views/AddTutorial.vue'
+import TutorialAdd from '../views/AddTutorial.vue'
 import TutorialsList from '../views/TutorialsList.vue'
 import NotFound from '../views/NotFound.vue'
 
 const routes: any[] = [
   {
     path: '/',
-    name: 'home',
+    name: 'Home',
     component: HomeView
   },
   {
     path: '/about',
-    name: 'about',
+    name: 'About',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -20,15 +20,19 @@ const routes: any[] = [
   },
   {
     path: '/add',
-    name: 'add-tutorial',
-    component: AddTutorial
+    name: 'TutorialAdd',
+    component: TutorialAdd
   },
   {
     path: '/tutorials',
-    name: 'tutorials-list',
+    name: 'TutorialsList',
     component: TutorialsList
   },
   // redirect
+  {
+    path: '/home',
+    redirect: '/'
+  },
   {
     path: '/all-tutorials',
     redirect: '/tutorials'
@@ -36,7 +40,7 @@ const routes: any[] = [
   // catchall 404
   {
     path: '/:catchAll(.*)',
-    name: 'not-found',
+    name: 'NotFound',
     component: NotFound
   }
 ]

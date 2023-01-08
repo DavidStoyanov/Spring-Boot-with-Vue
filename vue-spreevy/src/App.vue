@@ -2,9 +2,9 @@
   <header>
     <nav>
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/tutorials">Tutorials List</router-link> |
-      <router-link to="/add">Add Tutorial</router-link>
+      <router-link :to="{ name: 'About'}">About</router-link> |
+      <router-link :to="{ name: 'TutorialsList'}">Tutorials List</router-link> |
+      <router-link :to="{ name: 'TutorialAdd'}">Add Tutorial</router-link>
     </nav>
   </header>
 
