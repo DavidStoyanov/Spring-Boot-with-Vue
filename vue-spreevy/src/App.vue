@@ -3,6 +3,7 @@
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
+      <router-link to="/tutorials">Tutorials List</router-link> |
       <router-link to="/add">Add Tutorial</router-link>
     </nav>
   </header>
@@ -17,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-// import HelloWorld from './components/HelloWorld.vue'
+
 </script>
 
 <style>

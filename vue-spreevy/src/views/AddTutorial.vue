@@ -30,8 +30,7 @@
 import { defineComponent } from 'vue';
 import TutorialDataService from "@/services/TutorialDataService";
 import type ResponseData from '@/types/ResponseData';
-import type Tutorial from '@/types/Tutorial';
-import axios from 'axios';
+import type { TutorialAdd } from '@/types/Tutorial';
 
 export default defineComponent({
   name: 'AddTutorial',
@@ -41,7 +40,7 @@ export default defineComponent({
             id: null,
             title: '',
             description: ''
-        } as Tutorial,
+        } as TutorialAdd,
         submitted: false
     }
   },
@@ -59,7 +58,7 @@ export default defineComponent({
     },
     newTutorial() {
         this.submitted = false;
-        this.tutorial = {} as Tutorial;
+        this.tutorial = {} as TutorialAdd;
     }
   },
   components: {
