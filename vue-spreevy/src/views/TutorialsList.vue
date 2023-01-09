@@ -6,10 +6,12 @@
     <Transition>
     <div v-if="tutorials">
         <ul class="tutorials">
-            <li class="tutorial" v-for="tutorial in tutorials" :key="tutorial.id">
-                <h3 class="tutorial-title">{{ tutorial.title }}</h3>
-                <p>{{ tutorial.description }}</p>
-            </li>
+                <li class="tutorial" v-for="tutorial in tutorials" :key="tutorial.id">
+                    <router-link :to="{ name: 'TutorialDetails', params: { id: tutorial.id} }">
+                        <h3 class="tutorial-title">{{ tutorial.title }}</h3>
+                        <p>{{ tutorial.description }}</p>
+                    </router-link>
+                </li>
         </ul>
     </div>
 
@@ -78,5 +80,10 @@ export default defineComponent({
 
     .tutorial:hover .tutorial-title {
         text-decoration: underline;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: inherit;
     }
 </style>

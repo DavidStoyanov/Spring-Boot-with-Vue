@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import TutorialAdd from '../views/AddTutorial.vue'
+import TutorialAdd from '../views/TutorialAdd.vue'
 import TutorialsList from '../views/TutorialsList.vue'
+import TutorialDetails from '../views/TutorialDetails.vue'
 import NotFound from '../views/NotFound.vue'
 
 const routes: any[] = [
@@ -38,6 +39,15 @@ const routes: any[] = [
     component: TutorialsList,
     meta: {
       title: 'Tutorials - Vite App'
+    }
+  },
+  {
+    path: '/tutorials/:id',
+    name: 'TutorialDetails',
+    component: TutorialDetails,
+    props: true,
+    meta: {
+      title: 'Tutorial - Vite App'
     }
   },
   // redirect
