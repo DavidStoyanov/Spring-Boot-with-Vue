@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import type RouterObj from '../types/RouterObj'
 import HomeView from '../views/HomeView.vue'
 import TutorialAdd from '../views/TutorialAdd.vue'
 import TutorialsList from '../views/TutorialsList.vue'
@@ -75,10 +76,25 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  const metaTitle = to.meta.title;
-  document.title = `${to.meta.title}`;
-  if (!metaTitle) document.title = `Vite App`;
+
+
+router.beforeEach((to: RouterObj, from: RouterObj, next: any) => {
+  let newTitle: string = to.meta.title;
+  
+  // change tutorial details title from
+  // "Tutorial - Vite App" to "Tutorial #2 - Vite App"
+  // depends on id of tutorial
+  if (to.matched[0].path === '/tutorials/:id') {
+    const spaceIndex = newTitle.indexOf(' ')
+    newTitle = newTitle.slice(0, spaceIndex) +
+      ` #${to.params.id}` + newTitle.slice(spaceIndex + 1)
+  }
+
+  // set document title to meta title
+  if (newTitle) document.title = `${newTitle}`;
+  // default if meta title is missing
+  else document.title = `Vite App`;
+
   next();
 })
 
